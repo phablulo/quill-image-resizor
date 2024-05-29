@@ -3,6 +3,19 @@ import DefaultOptions from './DefaultOptions'
 import { DisplaySize } from './modules/DisplaySize'
 import { Toolbar } from './modules/Toolbar'
 import { Resize } from './modules/Resize'
+import type Quill from 'quill'
+
+const userSelects = Object.freeze(['userSelect', 'mozUserSelect', 'webkitUserSelect', 'msUserSelect'])
+
+export interface ImageResizorOptions {
+  modules?: string[]
+  overlayStyles?: Record<string, string | number>
+  handleStyles?: Record<string, string | number>
+  displayStyles?: Record<string, string | number>
+  toolbarStyles?: Record<string, string | number>
+  toolbarButtonStyles?: Record<string, string | number>
+  toolbarButtonSvgStyles?: Record<string, string | number>
+}
 
 const knownModules = { DisplaySize, Toolbar, Resize }
 
@@ -12,41 +25,45 @@ const knownModules = { DisplaySize, Toolbar, Resize }
  * @see https://quilljs.com/blog/building-a-custom-module/
  */
 export default class ImageResizor {
-  constructor(quill, options = {}) {
+  quill: Quill
+  options: ImageResizorOptions
+  overlay?: HTMLDivElement
+  img?: HTMLImageElement
+  moduleClasses: string[] = []
+  modules: {
+    onCreate: () => void
+    onUpdate: () => void
+    onDestroy: () => void
+  }[] = []
+
+  constructor(quill: Quill, options: ImageResizorOptions = {}) {
     this.initializeModules = this.initializeModules.bind(this)
     // save the quill reference and options
     this.quill = quill
-
-    // Apply the options to our defaults, and stash them for later
-    // defaultsDeep doesn't do arrays as you'd expect, so we'll need to apply the classes array from options separately
-    let moduleClasses = false
-    if (options.modules) {
-      moduleClasses = options.modules.slice()
-    }
 
     // Apply options to default options
     this.options = defaultsDeep({}, options, DefaultOptions)
 
     // (see above about moduleClasses)
-    if (moduleClasses !== false) {
-      this.options.modules = moduleClasses
+    if (options.modules?.length) {
+      this.moduleClasses = options.modules.slice()
     }
 
     // respond to clicks inside the editor
-    this.quill.root.addEventListener('click', this.handleClick, false)
+    this.quill!.root.addEventListener('click', this.handleClick, false)
+    const parent = this.quill!.root.parentNode! as HTMLElement
 
-    this.quill.root.parentNode.style.position = this.quill.root.parentNode.style.position || 'relative'
-
-    // setup modules
-    this.moduleClasses = this.options.modules
+    parent.style.position = parent.style.position || 'relative'
 
     this.modules = []
+
+    this.moduleClasses = this.options.modules || []
   }
 
   initializeModules() {
     this.removeModules()
 
-    this.modules = this.moduleClasses.map((ModuleClass) => new (knownModules[ModuleClass] || ModuleClass)(this))
+    this.modules = this.moduleClasses?.map((ModuleClass) => new (knownModules[ModuleClass] || ModuleClass)(this)) || []
 
     this.modules.forEach((module) => {
       module.onCreate()
@@ -70,9 +87,10 @@ export default class ImageResizor {
     this.modules = []
   }
 
-  handleClick = (evt) => {
-    if (evt.target && evt.target.tagName && evt.target.tagName.toUpperCase() === 'IMG') {
-      if (this.img === evt.target) {
+  handleClick = (evt: Event) => {
+    const target = evt.target as HTMLImageElement
+    if (target?.tagName?.toUpperCase() === 'IMG') {
+      if (this.img === target) {
         // we are already focused on this image
         return
       }
@@ -81,14 +99,14 @@ export default class ImageResizor {
         this.hide()
       }
       // clicked on an image inside the editor
-      this.show(evt.target)
+      this.show(target)
     } else if (this.img) {
       // clicked on a non image
       this.hide()
     }
   }
 
-  show = (img) => {
+  show = (img: HTMLImageElement) => {
     // keep track of this img element
     this.img = img
 
@@ -108,14 +126,14 @@ export default class ImageResizor {
     this.setUserSelect('none')
 
     // listen for the image being deleted or moved
-    document.addEventListener('keyup', this.checkImage, true)
-    this.quill.root.addEventListener('input', this.checkImage, true)
+    document.addEventListener('keyup', this.checkImageKeyUp, true)
+    this.quill.root.addEventListener('input', this.checkImageInput, true)
 
     // Create and add the overlay
     this.overlay = document.createElement('div')
     Object.assign(this.overlay.style, this.options.overlayStyles)
 
-    this.quill.root.parentNode.appendChild(this.overlay)
+    this.quill.root.parentNode!.appendChild(this.overlay)
 
     this.repositionElements()
   }
@@ -126,12 +144,12 @@ export default class ImageResizor {
     }
 
     // Remove the overlay
-    this.quill.root.parentNode.removeChild(this.overlay)
+    this.quill.root.parentNode!.removeChild(this.overlay)
     this.overlay = undefined
 
     // stop listening for image deletion or movement
-    document.removeEventListener('keyup', this.checkImage)
-    this.quill.root.removeEventListener('input', this.checkImage)
+    document.removeEventListener('keyup', this.checkImageKeyUp)
+    this.quill.root.removeEventListener('input', this.checkImageInput)
 
     // reset user-select
     this.setUserSelect('')
@@ -143,9 +161,9 @@ export default class ImageResizor {
     }
 
     // position the overlay over the image
-    const parent = this.quill.root.parentNode
+    const parent = this.quill.root.parentNode as HTMLElement
     const imgRect = this.img.getBoundingClientRect()
-    const containerRect = parent.getBoundingClientRect()
+    const containerRect = parent!.getBoundingClientRect()
 
     Object.assign(this.overlay.style, {
       left: `${imgRect.left - containerRect.left - 1 + parent.scrollLeft}px`,
@@ -161,24 +179,31 @@ export default class ImageResizor {
     this.img = undefined
   }
 
-  setUserSelect = (value) => {
-    ;['userSelect', 'mozUserSelect', 'webkitUserSelect', 'msUserSelect'].forEach((prop) => {
+  setUserSelect = (value: string | number) => {
+    userSelects.forEach((prop) => {
       // set on contenteditable element and <html>
       this.quill.root.style[prop] = value
       document.documentElement.style[prop] = value
     })
   }
 
-  checkImage = (evt) => {
+  checkImageKeyUp = (evt: KeyboardEvent) => {
     if (this.img) {
-      if (evt.keyCode == 46 || evt.keyCode == 8) {
-        window.Quill.find(this.img).deleteAt(0)
+      if (['Backspace', 'Delete'].includes(evt.code)) {
+        window['Quill']?.find(this.img).deleteAt(0)
+      }
+      this.hide()
+    }
+  }
+
+  checkImageInput = (evt: Event) => {
+    if (this.img) {
+      if (['deleteContentForward', 'deleteContentBackward'].includes((evt as InputEvent).inputType)) {
+        window['Quill']?.find(this.img).deleteAt(0)
       }
       this.hide()
     }
   }
 }
 
-if (window.Quill) {
-  window.Quill.register('modules/imageResizor', ImageResizor)
-}
+window['Quill']?.register('modules/imageResizor', ImageResizor)
