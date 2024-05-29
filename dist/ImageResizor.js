@@ -887,7 +887,7 @@ class zo {
     }), this.onUpdate();
   }
 }
-window.Quill && (console.log("testitest"), window.Quill.register("modules/imageResizer", zo));
+window.Quill && window.Quill.register("modules/imageResizor", zo);
 export {
   zo as default
 };

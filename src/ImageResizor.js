@@ -11,7 +11,7 @@ const knownModules = { DisplaySize, Toolbar, Resize }
  * (Works on Chrome, Edge, Safari and replaces Firefox's native resize behavior)
  * @see https://quilljs.com/blog/building-a-custom-module/
  */
-export default class ImageResizer {
+export default class ImageResizor {
   constructor(quill, options = {}) {
     this.initializeModules = this.initializeModules.bind(this)
     // save the quill reference and options
@@ -180,6 +180,5 @@ export default class ImageResizer {
 }
 
 if (window.Quill) {
-  console.log('testitest')
-  window.Quill.register('modules/imageResizer', ImageResizer)
+  window.Quill.register('modules/imageResizor', ImageResizor)
 }

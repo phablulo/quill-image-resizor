@@ -5,10 +5,10 @@ export default defineConfig({
   build: {
     lib: {
       // Could also be a dictionary or array of multiple entry points
-      entry: resolve(__dirname, 'src/ImageResizer.js'),
-      name: 'ImageResizer',
+      entry: resolve(__dirname, 'src/ImageResizor.js'),
+      name: 'ImageResizor',
       // the proper extensions will be added
-      fileName: 'ImageResizer'
+      fileName: 'ImageResizor'
     },
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled

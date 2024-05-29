@@ -1,15 +1,15 @@
 {
-  "name": "quill-image-resizer",
+  "name": "quill-image-resizor",
   "version": "1.0.0",
   "description": "A module for Quill rich text editor to allow images to be resized.",
   "type": "module",
-  "source": "src/ImageResizer.js",
+  "source": "src/ImageResizor.js",
   "exports": {
-    "require": "./dist/ImageResizer.umd.cjs",
-    "default": "./dist/ImageResizer.js"
+    "require": "./dist/ImageResizor.umd.cjs",
+    "default": "./dist/ImageResizor.js"
   },
-  "main": "./dist/ImageResizer.umd.cjs",
-  "module": "./dist/ImageResizer.js",
+  "main": "./dist/ImageResizor.umd.cjs",
+  "module": "./dist/ImageResizor.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "vite build",
@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/killercodemonkey/quill-image-resizer.git"
+    "url": "git+https://github.com/killercodemonkey/quill-image-resizor.git"
   },
   "keywords": [
     "quill",
@@ -28,6 +28,7 @@
     "image",
     "resize",
     "resizer",
+    "resizor",
     "sizer"
   ],
   "author": "@killercodemonkey",
@@ -39,9 +40,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/killercodemonkey/quill-image-resizer/issues"
+    "url": "https://github.com/killercodemonkey/quill-image-resizor/issues"
   },
-  "homepage": "https://github.com/killercodemonkey/quill-image-resizer#readme",
+  "homepage": "https://github.com/killercodemonkey/quill-image-resizor#readme",
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^7.11.0",
     "@typescript-eslint/parser": "^7.11.0",
