@@ -12,7 +12,8 @@
   "module": "./dist/ImageResizer.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:vite": "vite build",
+    "build": "vite build",
+    "deploy": "npm run build && gh-pages -d .",
     "lint": "eslint --ext js src",
     "lint:fix": "eslint --fix --ext js src"
   },

@@ -9,6 +9,7 @@ Fork and adaptions for quill 2 of [quill-image-resize-module](https://github.com
 - checkout / download
 - `npm i` && `npm run build`
 - open `demo.html`
+- [demo page](https://killercodemonkey.github.io/quill-image-resizer/demo.html)
 
 ## Usage
 
@@ -18,7 +19,7 @@ Fork and adaptions for quill 2 of [quill-image-resize-module](https://github.com
 import Quill from 'quill'
 import { ImageResizer } from 'quill-image-resizer'
 
-Quill.register('modules/imageResizerr', ImageResizer)
+Quill.register('modules/imageResizer', ImageResizer)
 
 const quill = new Quill(editor, {
   // ...
@@ -36,7 +37,7 @@ const quill = new Quill(editor, {
 Copy image-resize.min.js into your web root or include from node_modules
 
 ```html
-<script src="/node_modules/quill-image-resize-module/image-resize.min.js"></script>
+<script src="/node_modules/quill-image-resizer/ImageResizer.js"></script>
 ```
 
 ```javascript
