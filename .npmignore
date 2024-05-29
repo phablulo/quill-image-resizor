@@ -3,7 +3,7 @@
 node_modules/
 src/
 .editorconfig
-.eslintrc
+.eslintrc.json
 .gitignore
 .prettierrc.json
 demo.html
