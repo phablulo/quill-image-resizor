@@ -1,0 +1,10 @@
+.parcel-cache
+.vscode/
+node_modules/
+src/
+.editorconfig
+.eslintrc
+.gitignore
+.prettierrc.json
+demo.html
+package-lock-json
