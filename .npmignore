@@ -8,3 +8,5 @@ src/
 .prettierrc.json
 demo.html
 package-lock-json
+tsconfig.json
+vite.config.js
