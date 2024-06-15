@@ -1,6 +1,7 @@
 import IconAlignLeft from 'quill/assets/icons/align-left.svg?raw'
 import IconAlignCenter from 'quill/assets/icons/align-center.svg?raw'
 import IconAlignRight from 'quill/assets/icons/align-right.svg?raw'
+import IconClean from 'quill/assets/icons/clean.svg?raw'
 import { BaseModule } from './BaseModule'
 import type ImageResizor from '../ImageResizor'
 
@@ -66,6 +67,16 @@ export class Toolbar extends BaseModule {
           MarginStyle.add(this.img, '0 0 1em 1em')
         },
         isApplied: () => FloatStyle.value(this.img) === 'right'
+      },
+      {
+        icon: IconClean,
+        apply: () => {
+          if (this.img) {
+            this.img.removeAttribute('width')
+            this.img.removeAttribute('height')
+          }
+        },
+        isApplied: () => false,
       }
     ]
   }

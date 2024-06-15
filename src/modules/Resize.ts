@@ -5,7 +5,10 @@ export class Resize extends BaseModule {
   boxes: HTMLDivElement[] = []
   dragBox: HTMLDivElement | null = null
   dragStartX = 0
+  dragStartY = 0
   preDragWidth = 0
+  preDragHeight = 0
+  preDragARatio = 0
 
   constructor(imageResizor: ImageResizor) {
     super(imageResizor)
@@ -15,11 +18,10 @@ export class Resize extends BaseModule {
     // track resize handles
     this.boxes = []
 
-    // add 4 resize handles
-    this.addBox('nwse-resize') // top left
-    this.addBox('nesw-resize') // top right
-    this.addBox('nwse-resize') // bottom right
-    this.addBox('nesw-resize') // bottom left
+    // add 3 resize handles
+    this.addBox('e-resize') // right
+    this.addBox('n-resize') // bottom
+    this.addBox('nwse-resize') // right bottom
 
     this.positionBoxes()
   }
@@ -35,10 +37,9 @@ export class Resize extends BaseModule {
 
     // set the top and left for each drag handle
     ;[
-      { left: handleXOffset, top: handleYOffset }, // top left
-      { right: handleXOffset, top: handleYOffset }, // top right
+      { right: handleXOffset, top: `calc(50% - ${handleYOffset.slice(1)})` }, // right
+      { left: `calc(50% - ${handleXOffset.slice(1)})`, bottom: handleYOffset }, // bottom
       { right: handleXOffset, bottom: handleYOffset }, // bottom right
-      { left: handleXOffset, bottom: handleYOffset } // bottom left
     ].forEach((pos, idx) => {
       Object.assign(this.boxes[idx].style, pos)
     })
@@ -69,8 +70,13 @@ export class Resize extends BaseModule {
     this.dragBox = evt.target as HTMLDivElement
     // note starting mousedown position
     this.dragStartX = evt.clientX
+    this.dragStartY = evt.clientY
     // store the width before the drag
     this.preDragWidth = this.img?.width || this.img?.naturalWidth || 0
+    // store the height before the drag
+    this.preDragHeight = this.img?.height || this.img?.naturalHeight || 0
+    // store aspect ratio for performance
+    this.preDragARatio = this.preDragHeight / this.preDragWidth
     // set the proper cursor everywhere
     this.setCursor(this.dragBox.style.cursor)
     // listen for movement and mouseup
@@ -92,13 +98,20 @@ export class Resize extends BaseModule {
       return
     }
     // update image size
-    const deltaX = evt.clientX - this.dragStartX
-    if (this.dragBox === this.boxes[0] || this.dragBox === this.boxes[3]) {
-      // left-side resize handler; dragging right shrinks image
-      this.img.width = Math.round(this.preDragWidth - deltaX)
-    } else {
-      // right-side resize handler; dragging right enlarges image
-      this.img.width = Math.round(this.preDragWidth + deltaX)
+    if (this.dragBox === this.boxes[1]) { // bottom
+      const delta = evt.clientY - this.dragStartY
+      this.img.height = Math.round(this.preDragHeight + delta)
+    }
+    else {
+      const delta = evt.clientX - this.dragStartX
+      if (this.dragBox === this.boxes[0]) { // right
+        this.img.width = Math.round(this.preDragWidth + delta)
+      }
+      else { // right bottom
+        const w = this.preDragWidth + delta
+        this.img.width = Math.round(w)
+        this.img.height = Math.round(w * this.preDragARatio)
+      }
     }
     this.requestUpdate()
   }
