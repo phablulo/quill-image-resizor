@@ -6,6 +6,7 @@ export declare class Toolbar extends BaseModule {
     alignments: {
         icon: string;
         apply: () => void;
+        remove: () => void;
         isApplied: () => boolean;
     }[];
     constructor(resizer: ImageResizor);

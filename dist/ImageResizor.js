@@ -1,4 +1,4 @@
-var O = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : typeof global < "u" ? global : typeof self < "u" ? self : {};
+var S = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : typeof global < "u" ? global : typeof self < "u" ? self : {};
 function Bt(t) {
   return t && t.__esModule && Object.prototype.hasOwnProperty.call(t, "default") ? t.default : t;
 }
@@ -20,7 +20,7 @@ function Lt(t) {
   return t;
 }
 var dt = Lt, Ut = ut, N = Math.max;
-function qt(t, e, r) {
+function Ft(t, e, r) {
   return e = N(e === void 0 ? t.length - 1 : e, 0), function() {
     for (var i = arguments, s = -1, a = N(i.length - e, 0), n = Array(a); ++s < a; )
       n[s] = i[e + s];
@@ -30,22 +30,22 @@ function qt(t, e, r) {
     return o[e] = r(n), Ut(t, this, o);
   };
 }
-var zt = qt;
-function Ft(t) {
+var zt = Ft;
+function Rt(t) {
   return function() {
     return t;
   };
 }
-var Rt = Ft, Gt = typeof O == "object" && O && O.Object === Object && O, pt = Gt, Nt = pt, kt = typeof self == "object" && self && self.Object === Object && self, Kt = Nt || kt || Function("return this")(), v = Kt, Wt = v, Zt = Wt.Symbol, ft = Zt, k = ft, gt = Object.prototype, Vt = gt.hasOwnProperty, Xt = gt.toString, $ = k ? k.toStringTag : void 0;
+var qt = Rt, Gt = typeof S == "object" && S && S.Object === Object && S, pt = Gt, Nt = pt, kt = typeof self == "object" && self && self.Object === Object && self, Kt = Nt || kt || Function("return this")(), y = Kt, Wt = y, Zt = Wt.Symbol, ft = Zt, k = ft, gt = Object.prototype, Vt = gt.hasOwnProperty, Xt = gt.toString, O = k ? k.toStringTag : void 0;
 function Yt(t) {
-  var e = Vt.call(t, $), r = t[$];
+  var e = Vt.call(t, O), r = t[O];
   try {
-    t[$] = void 0;
+    t[O] = void 0;
     var i = !0;
   } catch {
   }
   var s = Xt.call(t);
-  return i && (e ? t[$] = r : delete t[$]), s;
+  return i && (e ? t[O] = r : delete t[O]), s;
 }
 var Qt = Yt, Jt = Object.prototype, te = Jt.toString;
 function ee(t) {
@@ -67,18 +67,18 @@ function ge(t) {
   var e = he(t);
   return e == de || e == pe || e == ue || e == fe;
 }
-var L = ge, ve = v, ye = ve["__core-js_shared__"], be = ye, H = be, Z = function() {
+var L = ge, ve = y, ye = ve["__core-js_shared__"], be = ye, H = be, Z = function() {
   var t = /[^.]+$/.exec(H && H.keys && H.keys.IE_PROTO || "");
   return t ? "Symbol(src)_1." + t : "";
 }();
 function _e(t) {
   return !!Z && Z in t;
 }
-var me = _e, $e = Function.prototype, xe = $e.toString;
-function Ae(t) {
+var me = _e, $e = Function.prototype, Oe = $e.toString;
+function xe(t) {
   if (t != null) {
     try {
-      return xe.call(t);
+      return Oe.call(t);
     } catch {
     }
     try {
@@ -88,31 +88,31 @@ function Ae(t) {
   }
   return "";
 }
-var Oe = Ae, we = L, Ce = me, Se = p, je = Oe, Te = /[\\^$.*+?()[\]{}|]/g, Me = /^\[object .+?Constructor\]$/, Ie = Function.prototype, De = Object.prototype, Pe = Ie.toString, Ee = De.hasOwnProperty, Be = RegExp(
+var Ae = xe, Se = L, Ce = me, we = p, je = Ae, Te = /[\\^$.*+?()[\]{}|]/g, Me = /^\[object .+?Constructor\]$/, Ie = Function.prototype, De = Object.prototype, Pe = Ie.toString, Ee = De.hasOwnProperty, Be = RegExp(
   "^" + Pe.call(Ee).replace(Te, "\\$&").replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, "$1.*?") + "$"
 );
 function He(t) {
-  if (!Se(t) || Ce(t))
+  if (!we(t) || Ce(t))
     return !1;
-  var e = we(t) ? Be : Me;
+  var e = Se(t) ? Be : Me;
   return e.test(je(t));
 }
 var Le = He;
 function Ue(t, e) {
   return t == null ? void 0 : t[e];
 }
-var qe = Ue, ze = Le, Fe = qe;
-function Re(t, e) {
-  var r = Fe(t, e);
+var Fe = Ue, ze = Le, Re = Fe;
+function qe(t, e) {
+  var r = Re(t, e);
   return ze(r) ? r : void 0;
 }
-var U = Re, Ge = U, Ne = function() {
+var U = qe, Ge = U, Ne = function() {
   try {
     var t = Ge(Object, "defineProperty");
     return t({}, "", {}), t;
   } catch {
   }
-}(), vt = Ne, ke = Rt, V = vt, Ke = dt, We = V ? function(t, e) {
+}(), vt = Ne, ke = qt, V = vt, Ke = dt, We = V ? function(t, e) {
   return V(t, "toString", {
     configurable: !0,
     enumerable: !1,
@@ -165,28 +165,28 @@ function _r(t) {
   return r < 0 ? void 0 : e[r][1];
 }
 var mr = _r, $r = I;
-function xr(t) {
+function Or(t) {
   return $r(this.__data__, t) > -1;
 }
-var Ar = xr, Or = I;
-function wr(t, e) {
-  var r = this.__data__, i = Or(r, t);
+var xr = Or, Ar = I;
+function Sr(t, e) {
+  var r = this.__data__, i = Ar(r, t);
   return i < 0 ? (++this.size, r.push([t, e])) : r[i][1] = e, this;
 }
-var Cr = wr, Sr = hr, jr = yr, Tr = mr, Mr = Ar, Ir = Cr;
-function y(t) {
+var Cr = Sr, wr = hr, jr = yr, Tr = mr, Mr = xr, Ir = Cr;
+function b(t) {
   var e = -1, r = t == null ? 0 : t.length;
   for (this.clear(); ++e < r; ) {
     var i = t[e];
     this.set(i[0], i[1]);
   }
 }
-y.prototype.clear = Sr;
-y.prototype.delete = jr;
-y.prototype.get = Tr;
-y.prototype.has = Mr;
-y.prototype.set = Ir;
-var D = y, Dr = D;
+b.prototype.clear = wr;
+b.prototype.delete = jr;
+b.prototype.get = Tr;
+b.prototype.has = Mr;
+b.prototype.set = Ir;
+var D = b, Dr = D;
 function Pr() {
   this.__data__ = new Dr(), this.size = 0;
 }
@@ -200,10 +200,10 @@ function Lr(t) {
   return this.__data__.get(t);
 }
 var Ur = Lr;
-function qr(t) {
+function Fr(t) {
   return this.__data__.has(t);
 }
-var zr = qr, Fr = U, Rr = v, Gr = Fr(Rr, "Map"), bt = Gr, Nr = U, kr = Nr(Object, "create"), P = kr, X = P;
+var zr = Fr, Rr = U, qr = y, Gr = Rr(qr, "Map"), bt = Gr, Nr = U, kr = Nr(Object, "create"), P = kr, X = P;
 function Kr() {
   this.__data__ = X ? X(null) : {}, this.size = 0;
 }
@@ -232,19 +232,19 @@ function hi(t, e) {
   return this.size += this.has(t) ? 0 : 1, r[t] = oi && e === void 0 ? li : e, this;
 }
 var ci = hi, ui = Wr, di = Vr, pi = ei, fi = ni, gi = ci;
-function b(t) {
+function _(t) {
   var e = -1, r = t == null ? 0 : t.length;
   for (this.clear(); ++e < r; ) {
     var i = t[e];
     this.set(i[0], i[1]);
   }
 }
-b.prototype.clear = ui;
-b.prototype.delete = di;
-b.prototype.get = pi;
-b.prototype.has = fi;
-b.prototype.set = gi;
-var vi = b, Y = vi, yi = D, bi = bt;
+_.prototype.clear = ui;
+_.prototype.delete = di;
+_.prototype.get = pi;
+_.prototype.has = fi;
+_.prototype.set = gi;
+var vi = _, Y = vi, yi = D, bi = bt;
 function _i() {
   this.size = 0, this.__data__ = {
     hash: new Y(),
@@ -257,17 +257,17 @@ function $i(t) {
   var e = typeof t;
   return e == "string" || e == "number" || e == "symbol" || e == "boolean" ? t !== "__proto__" : t === null;
 }
-var xi = $i, Ai = xi;
-function Oi(t, e) {
+var Oi = $i, xi = Oi;
+function Ai(t, e) {
   var r = t.__data__;
-  return Ai(e) ? r[typeof e == "string" ? "string" : "hash"] : r.map;
+  return xi(e) ? r[typeof e == "string" ? "string" : "hash"] : r.map;
 }
-var E = Oi, wi = E;
+var E = Ai, Si = E;
 function Ci(t) {
-  var e = wi(this, t).delete(t);
+  var e = Si(this, t).delete(t);
   return this.size -= e ? 1 : 0, e;
 }
-var Si = Ci, ji = E;
+var wi = Ci, ji = E;
 function Ti(t) {
   return ji(this, t).get(t);
 }
@@ -280,20 +280,20 @@ function Bi(t, e) {
   var r = Ei(this, t), i = r.size;
   return r.set(t, e), this.size += r.size == i ? 0 : 1, this;
 }
-var Hi = Bi, Li = mi, Ui = Si, qi = Mi, zi = Pi, Fi = Hi;
-function _(t) {
+var Hi = Bi, Li = mi, Ui = wi, Fi = Mi, zi = Pi, Ri = Hi;
+function m(t) {
   var e = -1, r = t == null ? 0 : t.length;
   for (this.clear(); ++e < r; ) {
     var i = t[e];
     this.set(i[0], i[1]);
   }
 }
-_.prototype.clear = Li;
-_.prototype.delete = Ui;
-_.prototype.get = qi;
-_.prototype.has = zi;
-_.prototype.set = Fi;
-var Ri = _, Gi = D, Ni = bt, ki = Ri, Ki = 200;
+m.prototype.clear = Li;
+m.prototype.delete = Ui;
+m.prototype.get = Fi;
+m.prototype.has = zi;
+m.prototype.set = Ri;
+var qi = m, Gi = D, Ni = bt, ki = qi, Ki = 200;
 function Wi(t, e) {
   var r = this.__data__;
   if (r instanceof Gi) {
@@ -305,16 +305,16 @@ function Wi(t, e) {
   return r.set(t, e), this.size = r.size, this;
 }
 var Zi = Wi, Vi = D, Xi = Er, Yi = Hr, Qi = Ur, Ji = zr, ta = Zi;
-function m(t) {
+function $(t) {
   var e = this.__data__ = new Vi(t);
   this.size = e.size;
 }
-m.prototype.clear = Xi;
-m.prototype.delete = Yi;
-m.prototype.get = Qi;
-m.prototype.has = Ji;
-m.prototype.set = ta;
-var ea = m, Q = vt;
+$.prototype.clear = Xi;
+$.prototype.delete = Yi;
+$.prototype.get = Qi;
+$.prototype.has = Ji;
+$.prototype.set = ta;
+var ea = $, Q = vt;
 function ra(t, e, r) {
   e == "__proto__" && Q ? Q(t, e, {
     configurable: !0,
@@ -323,7 +323,7 @@ function ra(t, e, r) {
     writable: !0
   }) : t[e] = r;
 }
-var q = ra, ia = q, aa = M;
+var F = ra, ia = F, aa = M;
 function sa(t, e, r) {
   (r !== void 0 && !aa(t[e], r) || r === void 0 && !(e in t)) && ia(t, e, r);
 }
@@ -341,16 +341,16 @@ function na(t) {
 var oa = na, la = oa, ha = la(), ca = ha, C = { exports: {} };
 C.exports;
 (function(t, e) {
-  var r = v, i = e && !e.nodeType && e, s = i && !0 && t && !t.nodeType && t, a = s && s.exports === i, n = a ? r.Buffer : void 0, o = n ? n.allocUnsafe : void 0;
+  var r = y, i = e && !e.nodeType && e, s = i && !0 && t && !t.nodeType && t, a = s && s.exports === i, n = a ? r.Buffer : void 0, o = n ? n.allocUnsafe : void 0;
   function l(c, u) {
     if (u)
       return c.slice();
-    var d = c.length, f = o ? o(d) : new c.constructor(d);
-    return c.copy(f), f;
+    var d = c.length, g = o ? o(d) : new c.constructor(d);
+    return c.copy(g), g;
   }
   t.exports = l;
 })(C, C.exports);
-var ua = C.exports, da = v, pa = da.Uint8Array, fa = pa, J = fa;
+var ua = C.exports, da = y, pa = da.Uint8Array, fa = pa, J = fa;
 function ga(t) {
   var e = new t.constructor(t.byteLength);
   return new J(e).set(new J(t)), e;
@@ -367,11 +367,11 @@ function ma(t, e) {
     e[r] = t[r];
   return e;
 }
-var $a = ma, xa = p, tt = Object.create, Aa = /* @__PURE__ */ function() {
+var $a = ma, Oa = p, tt = Object.create, xa = /* @__PURE__ */ function() {
   function t() {
   }
   return function(e) {
-    if (!xa(e))
+    if (!Oa(e))
       return {};
     if (tt)
       return tt(e);
@@ -379,18 +379,18 @@ var $a = ma, xa = p, tt = Object.create, Aa = /* @__PURE__ */ function() {
     var r = new t();
     return t.prototype = void 0, r;
   };
-}(), Oa = Aa;
-function wa(t, e) {
+}(), Aa = xa;
+function Sa(t, e) {
   return function(r) {
     return t(e(r));
   };
 }
-var Ca = wa, Sa = Ca, ja = Sa(Object.getPrototypeOf, Object), mt = ja, Ta = Object.prototype;
+var Ca = Sa, wa = Ca, ja = wa(Object.getPrototypeOf, Object), mt = ja, Ta = Object.prototype;
 function Ma(t) {
   var e = t && t.constructor, r = typeof e == "function" && e.prototype || Ta;
   return t === r;
 }
-var $t = Ma, Ia = Oa, Da = mt, Pa = $t;
+var $t = Ma, Ia = Aa, Da = mt, Pa = $t;
 function Ea(t) {
   return typeof t.constructor == "function" && !Pa(t) ? Ia(Da(t)) : {};
 }
@@ -398,19 +398,19 @@ var Ba = Ea;
 function Ha(t) {
   return t != null && typeof t == "object";
 }
-var A = Ha, La = T, Ua = A, qa = "[object Arguments]";
+var A = Ha, La = T, Ua = A, Fa = "[object Arguments]";
 function za(t) {
-  return Ua(t) && La(t) == qa;
+  return Ua(t) && La(t) == Fa;
 }
-var Fa = za, et = Fa, Ra = A, xt = Object.prototype, Ga = xt.hasOwnProperty, Na = xt.propertyIsEnumerable, ka = et(/* @__PURE__ */ function() {
+var Ra = za, et = Ra, qa = A, Ot = Object.prototype, Ga = Ot.hasOwnProperty, Na = Ot.propertyIsEnumerable, ka = et(/* @__PURE__ */ function() {
   return arguments;
 }()) ? et : function(t) {
-  return Ra(t) && Ga.call(t, "callee") && !Na.call(t, "callee");
-}, At = ka, Ka = Array.isArray, Ot = Ka, Wa = 9007199254740991;
+  return qa(t) && Ga.call(t, "callee") && !Na.call(t, "callee");
+}, xt = ka, Ka = Array.isArray, At = Ka, Wa = 9007199254740991;
 function Za(t) {
   return typeof t == "number" && t > -1 && t % 1 == 0 && t <= Wa;
 }
-var wt = Za, Va = L, Xa = wt;
+var St = Za, Va = L, Xa = St;
 function Ya(t) {
   return t != null && Xa(t.length) && !Va(t);
 }
@@ -418,17 +418,17 @@ var z = Ya, Qa = z, Ja = A;
 function ts(t) {
   return Ja(t) && Qa(t);
 }
-var es = ts, S = { exports: {} };
+var es = ts, w = { exports: {} };
 function rs() {
   return !1;
 }
 var is = rs;
-S.exports;
+w.exports;
 (function(t, e) {
-  var r = v, i = is, s = e && !e.nodeType && e, a = s && !0 && t && !t.nodeType && t, n = a && a.exports === s, o = n ? r.Buffer : void 0, l = o ? o.isBuffer : void 0, c = l || i;
+  var r = y, i = is, s = e && !e.nodeType && e, a = s && !0 && t && !t.nodeType && t, n = a && a.exports === s, o = n ? r.Buffer : void 0, l = o ? o.isBuffer : void 0, c = l || i;
   t.exports = c;
-})(S, S.exports);
-var Ct = S.exports, as = T, ss = mt, ns = A, os = "[object Object]", ls = Function.prototype, hs = Object.prototype, St = ls.toString, cs = hs.hasOwnProperty, us = St.call(Object);
+})(w, w.exports);
+var Ct = w.exports, as = T, ss = mt, ns = A, os = "[object Object]", ls = Function.prototype, hs = Object.prototype, wt = ls.toString, cs = hs.hasOwnProperty, us = wt.call(Object);
 function ds(t) {
   if (!ns(t) || as(t) != os)
     return !1;
@@ -436,15 +436,15 @@ function ds(t) {
   if (e === null)
     return !0;
   var r = cs.call(e, "constructor") && e.constructor;
-  return typeof r == "function" && r instanceof r && St.call(r) == us;
+  return typeof r == "function" && r instanceof r && wt.call(r) == us;
 }
-var ps = ds, fs = T, gs = wt, vs = A, ys = "[object Arguments]", bs = "[object Array]", _s = "[object Boolean]", ms = "[object Date]", $s = "[object Error]", xs = "[object Function]", As = "[object Map]", Os = "[object Number]", ws = "[object Object]", Cs = "[object RegExp]", Ss = "[object Set]", js = "[object String]", Ts = "[object WeakMap]", Ms = "[object ArrayBuffer]", Is = "[object DataView]", Ds = "[object Float32Array]", Ps = "[object Float64Array]", Es = "[object Int8Array]", Bs = "[object Int16Array]", Hs = "[object Int32Array]", Ls = "[object Uint8Array]", Us = "[object Uint8ClampedArray]", qs = "[object Uint16Array]", zs = "[object Uint32Array]", h = {};
-h[Ds] = h[Ps] = h[Es] = h[Bs] = h[Hs] = h[Ls] = h[Us] = h[qs] = h[zs] = !0;
-h[ys] = h[bs] = h[Ms] = h[_s] = h[Is] = h[ms] = h[$s] = h[xs] = h[As] = h[Os] = h[ws] = h[Cs] = h[Ss] = h[js] = h[Ts] = !1;
-function Fs(t) {
+var ps = ds, fs = T, gs = St, vs = A, ys = "[object Arguments]", bs = "[object Array]", _s = "[object Boolean]", ms = "[object Date]", $s = "[object Error]", Os = "[object Function]", xs = "[object Map]", As = "[object Number]", Ss = "[object Object]", Cs = "[object RegExp]", ws = "[object Set]", js = "[object String]", Ts = "[object WeakMap]", Ms = "[object ArrayBuffer]", Is = "[object DataView]", Ds = "[object Float32Array]", Ps = "[object Float64Array]", Es = "[object Int8Array]", Bs = "[object Int16Array]", Hs = "[object Int32Array]", Ls = "[object Uint8Array]", Us = "[object Uint8ClampedArray]", Fs = "[object Uint16Array]", zs = "[object Uint32Array]", h = {};
+h[Ds] = h[Ps] = h[Es] = h[Bs] = h[Hs] = h[Ls] = h[Us] = h[Fs] = h[zs] = !0;
+h[ys] = h[bs] = h[Ms] = h[_s] = h[Is] = h[ms] = h[$s] = h[Os] = h[xs] = h[As] = h[Ss] = h[Cs] = h[ws] = h[js] = h[Ts] = !1;
+function Rs(t) {
   return vs(t) && gs(t.length) && !!h[fs(t)];
 }
-var Rs = Fs;
+var qs = Rs;
 function Gs(t) {
   return function(e) {
     return t(e);
@@ -462,17 +462,17 @@ j.exports;
   }();
   t.exports = o;
 })(j, j.exports);
-var ks = j.exports, Ks = Rs, Ws = Ns, rt = ks, it = rt && rt.isTypedArray, Zs = it ? Ws(it) : Ks, jt = Zs;
+var ks = j.exports, Ks = qs, Ws = Ns, rt = ks, it = rt && rt.isTypedArray, Zs = it ? Ws(it) : Ks, jt = Zs;
 function Vs(t, e) {
   if (!(e === "constructor" && typeof t[e] == "function") && e != "__proto__")
     return t[e];
 }
-var Tt = Vs, Xs = q, Ys = M, Qs = Object.prototype, Js = Qs.hasOwnProperty;
+var Tt = Vs, Xs = F, Ys = M, Qs = Object.prototype, Js = Qs.hasOwnProperty;
 function tn(t, e, r) {
   var i = t[e];
   (!(Js.call(t, e) && Ys(i, r)) || r === void 0 && !(e in t)) && Xs(t, e, r);
 }
-var en = tn, rn = en, an = q;
+var en = tn, rn = en, an = F;
 function sn(t, e, r, i) {
   var s = !r;
   r || (r = {});
@@ -493,7 +493,7 @@ function un(t, e) {
   var r = typeof t;
   return e = e ?? hn, !!e && (r == "number" || r != "symbol" && cn.test(t)) && t > -1 && t % 1 == 0 && t < e;
 }
-var Mt = un, dn = ln, pn = At, fn = Ot, gn = Ct, vn = Mt, yn = jt, bn = Object.prototype, _n = bn.hasOwnProperty;
+var Mt = un, dn = ln, pn = xt, fn = At, gn = Ct, vn = Mt, yn = jt, bn = Object.prototype, _n = bn.hasOwnProperty;
 function mn(t, e) {
   var r = fn(t), i = !r && pn(t), s = !r && !i && gn(t), a = !r && !i && !s && yn(t), n = r || i || s || a, o = n ? dn(t.length, String) : [], l = o.length;
   for (var c in t)
@@ -505,18 +505,18 @@ function mn(t, e) {
   return o;
 }
 var $n = mn;
-function xn(t) {
+function On(t) {
   var e = [];
   if (t != null)
     for (var r in Object(t))
       e.push(r);
   return e;
 }
-var An = xn, On = p, wn = $t, Cn = An, Sn = Object.prototype, jn = Sn.hasOwnProperty;
+var xn = On, An = p, Sn = $t, Cn = xn, wn = Object.prototype, jn = wn.hasOwnProperty;
 function Tn(t) {
-  if (!On(t))
+  if (!An(t))
     return Cn(t);
-  var e = wn(t), r = [];
+  var e = Sn(t), r = [];
   for (var i in t)
     i == "constructor" && (e || !jn.call(t, i)) || r.push(i);
   return r;
@@ -529,7 +529,7 @@ var It = En, Bn = nn, Hn = It;
 function Ln(t) {
   return Bn(t, Hn(t));
 }
-var Un = Ln, at = _t, qn = ua, zn = _a, Fn = $a, Rn = Ba, st = At, nt = Ot, Gn = es, Nn = Ct, kn = L, Kn = p, Wn = ps, Zn = jt, ot = Tt, Vn = Un;
+var Un = Ln, at = _t, Fn = ua, zn = _a, Rn = $a, qn = Ba, st = xt, nt = At, Gn = es, Nn = Ct, kn = L, Kn = p, Wn = ps, Zn = jt, ot = Tt, Vn = Un;
 function Xn(t, e, r, i, s, a, n) {
   var o = ot(t, r), l = ot(e, r), c = n.get(l);
   if (c) {
@@ -538,8 +538,8 @@ function Xn(t, e, r, i, s, a, n) {
   }
   var u = a ? a(o, l, r + "", t, e, n) : void 0, d = u === void 0;
   if (d) {
-    var f = nt(l), B = !f && Nn(l), G = !f && !B && Zn(l);
-    u = l, f || B || G ? nt(o) ? u = o : Gn(o) ? u = Fn(o) : B ? (d = !1, u = qn(l, !0)) : G ? (d = !1, u = zn(l, !0)) : u = [] : Wn(l) || st(l) ? (u = o, st(o) ? u = Vn(o) : (!Kn(o) || kn(o)) && (u = Rn(l))) : d = !1;
+    var g = nt(l), B = !g && Nn(l), G = !g && !B && Zn(l);
+    u = l, g || B || G ? nt(o) ? u = o : Gn(o) ? u = Rn(o) : B ? (d = !1, u = Fn(l, !0)) : G ? (d = !1, u = zn(l, !0)) : u = [] : Wn(l) || st(l) ? (u = o, st(o) ? u = Vn(o) : (!Kn(o) || kn(o)) && (u = qn(l))) : d = !1;
   }
   d && (n.set(l, u), s(u, l, i, a, n), n.delete(l)), at(t, r, u);
 }
@@ -578,10 +578,10 @@ function vo(t) {
 }
 var yo = vo, bo = Pt, _o = yo, mo = _o(function(t, e, r, i) {
   bo(t, e, r, i);
-}), $o = mo, xo = ut, Ao = yt, Oo = no, wo = $o, Co = Ao(function(t) {
-  return t.push(void 0, Oo), xo(wo, void 0, t);
-}), So = Co;
-const jo = /* @__PURE__ */ Bt(So), To = {
+}), $o = mo, Oo = ut, xo = yt, Ao = no, So = $o, Co = xo(function(t) {
+  return t.push(void 0, Ao), Oo(So, void 0, t);
+}), wo = Co;
+const jo = /* @__PURE__ */ Bt(wo), To = {
   modules: ["DisplaySize", "Toolbar", "Resize"],
   overlayStyles: {
     position: "absolute",
@@ -642,7 +642,7 @@ const jo = /* @__PURE__ */ Bt(So), To = {
     strokeWidth: "0"
   }
 };
-class F {
+class R {
   constructor(e) {
     this.onCreate = () => {
     }, this.onDestroy = () => {
@@ -650,7 +650,7 @@ class F {
     }, this.overlay = e.overlay, this.img = e.img, this.options = e.options, this.requestUpdate = e.onUpdate;
   }
 }
-class Mo extends F {
+class Mo extends R {
   constructor(e) {
     super(e), this.display = null, this.onCreate = () => {
       var r;
@@ -703,14 +703,8 @@ const Io = `<svg viewbox="0 0 18 18">
   <path class="ql-fill" d="M13,16H3a1,1,0,0,1,0-2H13A1,1,0,0,1,13,16Z"/>
   <path class="ql-fill" d="M13,4H3A1,1,0,0,1,3,2H13A1,1,0,0,1,13,4Z"/>
   <rect class="ql-fill" x="8" y="6" width="8" height="6" rx="1" ry="1" transform="translate(24 18) rotate(-180)"/>
-</svg>`, Eo = `<svg class="" viewbox="0 0 18 18">
-  <line class="ql-stroke" x1="5" x2="13" y1="3" y2="3"></line>
-  <line class="ql-stroke" x1="6" x2="9.35" y1="12" y2="3"></line>
-  <line class="ql-stroke" x1="11" x2="15" y1="11" y2="15"></line>
-  <line class="ql-stroke" x1="15" x2="11" y1="11" y2="15"></line>
-  <rect class="ql-fill" height="1" rx="0.5" ry="0.5" width="7" x="2" y="14"></rect>
-</svg>`, Bo = window.Quill.import("formats/image"), ht = ["alt", "height", "width", "style"];
-class Ho extends Bo {
+</svg>`, Eo = window.Quill.import("formats/image"), ht = ["alt", "height", "width", "style"];
+class Bo extends Eo {
   static formats(e) {
     return ht.reduce(function(r, i) {
       return e.hasAttribute(i) && (r[i] = e.getAttribute(i)), r;
@@ -720,9 +714,9 @@ class Ho extends Bo {
     ht.indexOf(e) > -1 ? r ? this.domNode.setAttribute(e, r) : this.domNode.removeAttribute(e) : super.format(e, r);
   }
 }
-window.Quill.register(Ho, !0);
-const R = window.Quill.imports.parchment, g = new R.StyleAttributor("float", "float"), x = new R.StyleAttributor("margin", "margin"), w = new R.StyleAttributor("display", "display");
-class Lo extends F {
+window.Quill.register(Bo, !0);
+const q = window.Quill.imports.parchment, f = new q.StyleAttributor("float", "float"), v = new q.StyleAttributor("margin", "margin"), x = new q.StyleAttributor("display", "display");
+class Ho extends R {
   constructor(e) {
     super(e), this.alignments = [], this.onCreate = () => {
       var r;
@@ -730,39 +724,49 @@ class Lo extends F {
     }, this.onDestroy = () => {
     }, this.onUpdate = () => {
     }, this._defineAlignments = () => {
-      var r, i, s, a;
-      this.alignments = [], ((r = this.options.toolbarButtons) == null ? void 0 : r.left) !== !1 && this.alignments.push({
+      var s, a, n;
+      if (this.alignments = [], !this.img)
+        return;
+      const r = () => {
+        f.remove(this.img), v.remove(this.img), x.remove(this.img);
+      };
+      ((s = this.options.toolbarButtons) == null ? void 0 : s.left) !== !1 && this.alignments.push({
         icon: Io,
         apply: () => {
-          w.add(this.img, "inline"), g.add(this.img, "left"), x.add(this.img, "0 1em 1em 0");
+          x.add(this.img, "inline"), f.add(this.img, "left"), v.add(this.img, "0 1em 1em 0");
         },
-        isApplied: () => g.value(this.img) === "left"
-      }), ((i = this.options.toolbarButtons) == null ? void 0 : i.center) !== !1 && this.alignments.push({
+        isApplied: () => f.value(this.img) === "left",
+        remove: r
+      }), ((a = this.options.toolbarButtons) == null ? void 0 : a.center) !== !1 && this.alignments.push({
         icon: Do,
         apply: () => {
-          w.add(this.img, "block"), g.remove(this.img), x.add(this.img, "auto");
+          x.add(this.img, "block"), f.remove(this.img), v.add(this.img, "auto");
         },
-        isApplied: () => x.value(this.img) === "auto"
-      }), ((s = this.options.toolbarButtons) == null ? void 0 : s.right) !== !1 && this.alignments.push({
+        isApplied: () => v.value(this.img) === "auto",
+        remove: r
+      }), ((n = this.options.toolbarButtons) == null ? void 0 : n.right) !== !1 && this.alignments.push({
         icon: Po,
         apply: () => {
-          w.add(this.img, "inline"), g.add(this.img, "right"), x.add(this.img, "0 0 1em 1em");
+          x.add(this.img, "inline"), f.add(this.img, "right"), v.add(this.img, "0 0 1em 1em");
         },
-        isApplied: () => g.value(this.img) === "right"
-      }), ((a = this.options.toolbarButtons) == null ? void 0 : a.clean) !== !1 && this.alignments.push({
-        icon: Eo,
-        apply: () => {
-          this.img && (this.img.removeAttribute("width"), this.img.removeAttribute("height"));
-        },
-        isApplied: () => !1
+        isApplied: () => f.value(this.img) === "right",
+        remove: r
       });
+      const i = { ...this.options.toolbarButtons };
+      delete i.left, delete i.right, delete i.center;
+      for (const o of Object.values(i)) {
+        if (!(o instanceof Function))
+          continue;
+        const l = o(this.img, x, f, v);
+        this.alignments.push(l);
+      }
     }, this._addToolbarButtons = () => {
       const r = [];
       this.alignments.forEach((i, s) => {
         var n;
         const a = document.createElement("span");
         r.push(a), a.innerHTML = i.icon, a.addEventListener("click", () => {
-          r.forEach((o) => o.style.filter = ""), i.isApplied() ? (g.remove(this.img), x.remove(this.img), w.remove(this.img)) : (this._selectButton(a), i.apply()), this.requestUpdate();
+          r.forEach((o) => o.style.filter = ""), i.isApplied() ? i.remove() : (this._selectButton(a), i.apply()), this.requestUpdate();
         }), Object.assign(a.style, this.options.toolbarButtonStyles), s > 0 && (a.style.borderLeftWidth = "0"), Object.assign(a.children[0].style, this.options.toolbarButtonSvgStyles), i.isApplied() && this._selectButton(a), (n = this.toolbar) == null || n.appendChild(a);
       });
     }, this._selectButton = (r) => {
@@ -770,7 +774,7 @@ class Lo extends F {
     };
   }
 }
-class Uo extends F {
+class Lo extends R {
   constructor(e) {
     super(e), this.boxes = [], this.dragBox = null, this.dragStartX = 0, this.dragStartY = 0, this.preDragWidth = 0, this.preDragHeight = 0, this.preDragARatio = 0, this.onCreate = () => {
       this.boxes = [], this.addBox("e-resize"), this.addBox("n-resize"), this.addBox("nwse-resize"), this.positionBoxes();
@@ -821,8 +825,8 @@ class Uo extends F {
     };
   }
 }
-const qo = Object.freeze(["userSelect", "mozUserSelect", "webkitUserSelect", "msUserSelect"]), zo = { DisplaySize: Mo, Toolbar: Lo, Resize: Uo };
-class Fo {
+const Uo = Object.freeze(["userSelect", "mozUserSelect", "webkitUserSelect", "msUserSelect"]), Fo = { DisplaySize: Mo, Toolbar: Ho, Resize: Lo };
+class zo {
   constructor(e, r = {}) {
     var s;
     this.moduleClasses = [], this.modules = [], this.onUpdate = () => {
@@ -861,7 +865,7 @@ class Fo {
     }, this.hide = () => {
       this.hideOverlay(), this.removeModules(), this.img = void 0;
     }, this.setUserSelect = (a) => {
-      qo.forEach((n) => {
+      Uo.forEach((n) => {
         this.quill.root.style[n] = a, document.documentElement.style[n] = a;
       });
     }, this.checkImageKeyUp = (a) => {
@@ -876,13 +880,13 @@ class Fo {
   }
   initializeModules() {
     var e;
-    this.removeModules(), this.modules = ((e = this.moduleClasses) == null ? void 0 : e.map((r) => new (zo[r] || r)(this))) || [], this.modules.forEach((r) => {
+    this.removeModules(), this.modules = ((e = this.moduleClasses) == null ? void 0 : e.map((r) => new (Fo[r] || r)(this))) || [], this.modules.forEach((r) => {
       r.onCreate();
     }), this.onUpdate();
   }
 }
 var ct;
-(ct = window.Quill) == null || ct.register("modules/imageResizor", Fo);
+(ct = window.Quill) == null || ct.register("modules/imageResizor", zo);
 export {
-  Fo as default
+  zo as default
 };
