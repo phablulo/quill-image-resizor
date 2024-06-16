@@ -6,8 +6,8 @@ import { BaseModule } from './BaseModule'
 import type ImageResizor from '../ImageResizor'
 import ImageFormat from './Image'
 
-window['Quill'].register(ImageFormat, true)
-const Parchment = window['Quill'].imports.parchment
+window.Quill.register(ImageFormat, true)
+const Parchment = window.Quill.imports.parchment
 const FloatStyle = new Parchment.StyleAttributor('float', 'float')
 const MarginStyle = new Parchment.StyleAttributor('margin', 'margin')
 const DisplayStyle = new Parchment.StyleAttributor('display', 'display')
@@ -17,6 +17,7 @@ export class Toolbar extends BaseModule {
   alignments: {
     icon: string
     apply: () => void
+    remove: () => void
     isApplied: () => boolean
   }[] = []
 
@@ -43,6 +44,12 @@ export class Toolbar extends BaseModule {
 
   _defineAlignments = () => {
     this.alignments = []
+    if (!this.img) return // nothing to do...
+    const remove = () => {
+      FloatStyle.remove(this.img)
+      MarginStyle.remove(this.img)
+      DisplayStyle.remove(this.img)
+    }
     if (this.options.toolbarButtons?.left !== false)
       this.alignments.push({
         icon: IconAlignLeft,
@@ -51,7 +58,8 @@ export class Toolbar extends BaseModule {
           FloatStyle.add(this.img, 'left')
           MarginStyle.add(this.img, '0 1em 1em 0')
         },
-        isApplied: () => FloatStyle.value(this.img) === 'left'
+        isApplied: () => FloatStyle.value(this.img) === 'left',
+        remove
       })
     if (this.options.toolbarButtons?.center !== false)
       this.alignments.push({
@@ -61,7 +69,8 @@ export class Toolbar extends BaseModule {
           FloatStyle.remove(this.img)
           MarginStyle.add(this.img, 'auto')
         },
-        isApplied: () => MarginStyle.value(this.img) === 'auto'
+        isApplied: () => MarginStyle.value(this.img) === 'auto',
+        remove
       })
     if (this.options.toolbarButtons?.right !== false)
       this.alignments.push({
@@ -71,7 +80,8 @@ export class Toolbar extends BaseModule {
           FloatStyle.add(this.img, 'right')
           MarginStyle.add(this.img, '0 0 1em 1em')
         },
-        isApplied: () => FloatStyle.value(this.img) === 'right'
+        isApplied: () => FloatStyle.value(this.img) === 'right',
+        remove
       })
     if (this.options.toolbarButtons?.clean !== false)
       this.alignments.push({
@@ -82,8 +92,19 @@ export class Toolbar extends BaseModule {
             this.img.removeAttribute('height')
           }
         },
-        isApplied: () => false
+        isApplied: () => false,
+        remove
       })
+    const copy = { ...this.options.toolbarButtons }
+    delete copy.left
+    delete copy.right
+    delete copy.center
+    delete copy.clean
+    for (const value of Object.values(copy)) {
+      if (!(value instanceof Function)) continue
+      const button = value(this.img, DisplayStyle, FloatStyle, MarginStyle)
+      this.alignments.push(button)
+    }
   }
 
   _addToolbarButtons = () => {
@@ -97,9 +118,7 @@ export class Toolbar extends BaseModule {
         buttons.forEach((button) => (button.style.filter = ''))
         if (alignment.isApplied()) {
           // If applied, unapply
-          FloatStyle.remove(this.img)
-          MarginStyle.remove(this.img)
-          DisplayStyle.remove(this.img)
+          alignment.remove()
         } else {
           // otherwise, select button and apply
           this._selectButton(button)

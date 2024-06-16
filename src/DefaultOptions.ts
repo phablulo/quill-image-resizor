@@ -1,10 +1,23 @@
+import type { Parchment } from 'quill'
+export type ButtonFactory = (
+  img: HTMLImageElement,
+  marginStyle: Parchment,
+  displayStyle: Parchment,
+  floatStyle: Parchment
+) => {
+  icon: string
+  apply: () => void
+  remove: () => void
+  isApplied: () => boolean
+}
+
 export interface ImageResizorOptions {
   modules?: string[]
   overlayStyles?: Record<string, string | number>
   handleStyles?: Record<string, string | number>
   displayStyles?: Record<string, string | number>
   toolbarStyles?: Record<string, string | number>
-  toolbarButtons?: Record<'left' | 'right' | 'center' | 'clean', boolean>
+  toolbarButtons?: Record<string, boolean | ButtonFactory>
   toolbarButtonStyles?: Record<string, string | number>
   toolbarButtonSvgStyles?: Record<string, string | number>
 }

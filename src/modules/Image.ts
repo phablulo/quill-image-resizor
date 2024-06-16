@@ -1,4 +1,4 @@
-const BaseImageFormat = window['Quill'].import('formats/image')
+const BaseImageFormat = window.Quill.import('formats/image')
 const ImageFormatAttributesList = ['alt', 'height', 'width', 'style']
 
 // thanks Maximus!
