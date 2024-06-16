@@ -42,8 +42,9 @@ export class Toolbar extends BaseModule {
   onUpdate = () => {}
 
   _defineAlignments = () => {
-    this.alignments = [
-      {
+    this.alignments = []
+    if (this.options.toolbarButtons?.left !== false)
+      this.alignments.push({
         icon: IconAlignLeft,
         apply: () => {
           DisplayStyle.add(this.img, 'inline')
@@ -51,8 +52,9 @@ export class Toolbar extends BaseModule {
           MarginStyle.add(this.img, '0 1em 1em 0')
         },
         isApplied: () => FloatStyle.value(this.img) === 'left'
-      },
-      {
+      })
+    if (this.options.toolbarButtons?.center !== false)
+      this.alignments.push({
         icon: IconAlignCenter,
         apply: () => {
           DisplayStyle.add(this.img, 'block')
@@ -60,8 +62,9 @@ export class Toolbar extends BaseModule {
           MarginStyle.add(this.img, 'auto')
         },
         isApplied: () => MarginStyle.value(this.img) === 'auto'
-      },
-      {
+      })
+    if (this.options.toolbarButtons?.right !== false)
+      this.alignments.push({
         icon: IconAlignRight,
         apply: () => {
           DisplayStyle.add(this.img, 'inline')
@@ -69,8 +72,9 @@ export class Toolbar extends BaseModule {
           MarginStyle.add(this.img, '0 0 1em 1em')
         },
         isApplied: () => FloatStyle.value(this.img) === 'right'
-      },
-      {
+      })
+    if (this.options.toolbarButtons?.clean !== false)
+      this.alignments.push({
         icon: IconClean,
         apply: () => {
           if (this.img) {
@@ -79,8 +83,7 @@ export class Toolbar extends BaseModule {
           }
         },
         isApplied: () => false
-      }
-    ]
+      })
   }
 
   _addToolbarButtons = () => {

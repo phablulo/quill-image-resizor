@@ -4,6 +4,7 @@ export interface ImageResizorOptions {
     handleStyles?: Record<string, string | number>;
     displayStyles?: Record<string, string | number>;
     toolbarStyles?: Record<string, string | number>;
+    toolbarButtons?: Record<'left' | 'right' | 'center' | 'clean', boolean>;
     toolbarButtonStyles?: Record<string, string | number>;
     toolbarButtonSvgStyles?: Record<string, string | number>;
 }

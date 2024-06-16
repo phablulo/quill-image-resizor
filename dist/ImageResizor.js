@@ -622,6 +622,12 @@ const jo = /* @__PURE__ */ Bt(So), To = {
     boxSizing: "border-box",
     cursor: "default"
   },
+  toolbarButtons: {
+    left: !0,
+    center: !0,
+    right: !0,
+    clean: !0
+  },
   toolbarButtonStyles: {
     display: "inline-block",
     width: "24px",
@@ -724,36 +730,32 @@ class Lo extends F {
     }, this.onDestroy = () => {
     }, this.onUpdate = () => {
     }, this._defineAlignments = () => {
-      this.alignments = [
-        {
-          icon: Io,
-          apply: () => {
-            w.add(this.img, "inline"), g.add(this.img, "left"), x.add(this.img, "0 1em 1em 0");
-          },
-          isApplied: () => g.value(this.img) === "left"
+      var r, i, s, a;
+      this.alignments = [], ((r = this.options.toolbarButtons) == null ? void 0 : r.left) !== !1 && this.alignments.push({
+        icon: Io,
+        apply: () => {
+          w.add(this.img, "inline"), g.add(this.img, "left"), x.add(this.img, "0 1em 1em 0");
         },
-        {
-          icon: Do,
-          apply: () => {
-            w.add(this.img, "block"), g.remove(this.img), x.add(this.img, "auto");
-          },
-          isApplied: () => x.value(this.img) === "auto"
+        isApplied: () => g.value(this.img) === "left"
+      }), ((i = this.options.toolbarButtons) == null ? void 0 : i.center) !== !1 && this.alignments.push({
+        icon: Do,
+        apply: () => {
+          w.add(this.img, "block"), g.remove(this.img), x.add(this.img, "auto");
         },
-        {
-          icon: Po,
-          apply: () => {
-            w.add(this.img, "inline"), g.add(this.img, "right"), x.add(this.img, "0 0 1em 1em");
-          },
-          isApplied: () => g.value(this.img) === "right"
+        isApplied: () => x.value(this.img) === "auto"
+      }), ((s = this.options.toolbarButtons) == null ? void 0 : s.right) !== !1 && this.alignments.push({
+        icon: Po,
+        apply: () => {
+          w.add(this.img, "inline"), g.add(this.img, "right"), x.add(this.img, "0 0 1em 1em");
         },
-        {
-          icon: Eo,
-          apply: () => {
-            this.img && (this.img.removeAttribute("width"), this.img.removeAttribute("height"));
-          },
-          isApplied: () => !1
-        }
-      ];
+        isApplied: () => g.value(this.img) === "right"
+      }), ((a = this.options.toolbarButtons) == null ? void 0 : a.clean) !== !1 && this.alignments.push({
+        icon: Eo,
+        apply: () => {
+          this.img && (this.img.removeAttribute("width"), this.img.removeAttribute("height"));
+        },
+        isApplied: () => !1
+      });
     }, this._addToolbarButtons = () => {
       const r = [];
       this.alignments.forEach((i, s) => {
