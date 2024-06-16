@@ -5,7 +5,10 @@ export declare class Resize extends BaseModule {
     boxes: HTMLDivElement[];
     dragBox: HTMLDivElement | null;
     dragStartX: number;
+    dragStartY: number;
     preDragWidth: number;
+    preDragHeight: number;
+    preDragARatio: number;
     constructor(imageResizor: ImageResizor);
     onCreate: () => void;
     onDestroy: () => void;
