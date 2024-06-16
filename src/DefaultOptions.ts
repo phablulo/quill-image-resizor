@@ -1,9 +1,8 @@
-import type { Parchment } from 'quill'
 export type ButtonFactory = (
   img: HTMLImageElement,
-  marginStyle: Parchment,
-  displayStyle: Parchment,
-  floatStyle: Parchment
+  marginStyle: any, // eslint-disable-line @typescript-eslint/no-explicit-any
+  displayStyle: any, // eslint-disable-line @typescript-eslint/no-explicit-any
+  floatStyle: any // eslint-disable-line @typescript-eslint/no-explicit-any
 ) => {
   icon: string
   apply: () => void
