@@ -4,8 +4,11 @@ import IconAlignRight from 'quill/assets/icons/float-right.svg?raw'
 import IconClean from 'quill/assets/icons/clean.svg?raw'
 import { BaseModule } from './BaseModule'
 import type ImageResizor from '../ImageResizor'
+import ImageFormat from './Image'
 
-const Parchment = window['Quill'].imports.parchment
+
+window.Quill.register(ImageFormat, true)
+const Parchment = window.Quill.imports.parchment
 const FloatStyle = new Parchment.StyleAttributor('float', 'float')
 const MarginStyle = new Parchment.StyleAttributor('margin', 'margin')
 const DisplayStyle = new Parchment.StyleAttributor('display', 'display')
