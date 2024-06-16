@@ -54,8 +54,5 @@ export class DisplaySize extends BaseModule {
     }
   }
 
-  getCurrentSize = () => [
-    this.img?.width || 0,
-    this.img?.height || 0
-  ]
+  getCurrentSize = () => [this.img?.width || 0, this.img?.height || 0]
 }

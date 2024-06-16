@@ -6,9 +6,8 @@ import { BaseModule } from './BaseModule'
 import type ImageResizor from '../ImageResizor'
 import ImageFormat from './Image'
 
-
-window.Quill.register(ImageFormat, true)
-const Parchment = window.Quill.imports.parchment
+window['Quill'].register(ImageFormat, true)
+const Parchment = window['Quill'].imports.parchment
 const FloatStyle = new Parchment.StyleAttributor('float', 'float')
 const MarginStyle = new Parchment.StyleAttributor('margin', 'margin')
 const DisplayStyle = new Parchment.StyleAttributor('display', 'display')
@@ -79,7 +78,7 @@ export class Toolbar extends BaseModule {
             this.img.removeAttribute('height')
           }
         },
-        isApplied: () => false,
+        isApplied: () => false
       }
     ]
   }
