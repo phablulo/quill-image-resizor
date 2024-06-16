@@ -1,7 +1,6 @@
 import IconAlignLeft from 'quill/assets/icons/float-left.svg?raw'
 import IconAlignCenter from 'quill/assets/icons/float-center.svg?raw'
 import IconAlignRight from 'quill/assets/icons/float-right.svg?raw'
-import IconClean from 'quill/assets/icons/clean.svg?raw'
 import { BaseModule } from './BaseModule'
 import type ImageResizor from '../ImageResizor'
 import ImageFormat from './Image'
@@ -83,23 +82,10 @@ export class Toolbar extends BaseModule {
         isApplied: () => FloatStyle.value(this.img) === 'right',
         remove
       })
-    if (this.options.toolbarButtons?.clean !== false)
-      this.alignments.push({
-        icon: IconClean,
-        apply: () => {
-          if (this.img) {
-            this.img.removeAttribute('width')
-            this.img.removeAttribute('height')
-          }
-        },
-        isApplied: () => false,
-        remove
-      })
     const copy = { ...this.options.toolbarButtons }
     delete copy.left
     delete copy.right
     delete copy.center
-    delete copy.clean
     for (const value of Object.values(copy)) {
       if (!(value instanceof Function)) continue
       const button = value(this.img, DisplayStyle, FloatStyle, MarginStyle)
