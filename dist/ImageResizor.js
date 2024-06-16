@@ -75,7 +75,7 @@ function _e(t) {
   return !!Z && Z in t;
 }
 var me = _e, $e = Function.prototype, Oe = $e.toString;
-function xe(t) {
+function Ae(t) {
   if (t != null) {
     try {
       return Oe.call(t);
@@ -88,11 +88,11 @@ function xe(t) {
   }
   return "";
 }
-var Ae = xe, Se = L, Ce = me, we = p, je = Ae, Te = /[\\^$.*+?()[\]{}|]/g, Me = /^\[object .+?Constructor\]$/, Ie = Function.prototype, De = Object.prototype, Pe = Ie.toString, Ee = De.hasOwnProperty, Be = RegExp(
+var xe = Ae, Se = L, we = me, Ce = p, je = xe, Te = /[\\^$.*+?()[\]{}|]/g, Me = /^\[object .+?Constructor\]$/, Ie = Function.prototype, De = Object.prototype, Pe = Ie.toString, Ee = De.hasOwnProperty, Be = RegExp(
   "^" + Pe.call(Ee).replace(Te, "\\$&").replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, "$1.*?") + "$"
 );
 function He(t) {
-  if (!we(t) || Ce(t))
+  if (!Ce(t) || we(t))
     return !1;
   var e = Se(t) ? Be : Me;
   return e.test(je(t));
@@ -168,12 +168,12 @@ var mr = _r, $r = I;
 function Or(t) {
   return $r(this.__data__, t) > -1;
 }
-var xr = Or, Ar = I;
+var Ar = Or, xr = I;
 function Sr(t, e) {
-  var r = this.__data__, i = Ar(r, t);
+  var r = this.__data__, i = xr(r, t);
   return i < 0 ? (++this.size, r.push([t, e])) : r[i][1] = e, this;
 }
-var Cr = Sr, wr = hr, jr = yr, Tr = mr, Mr = xr, Ir = Cr;
+var wr = Sr, Cr = hr, jr = yr, Tr = mr, Mr = Ar, Ir = wr;
 function b(t) {
   var e = -1, r = t == null ? 0 : t.length;
   for (this.clear(); ++e < r; ) {
@@ -181,7 +181,7 @@ function b(t) {
     this.set(i[0], i[1]);
   }
 }
-b.prototype.clear = wr;
+b.prototype.clear = Cr;
 b.prototype.delete = jr;
 b.prototype.get = Tr;
 b.prototype.has = Mr;
@@ -257,17 +257,17 @@ function $i(t) {
   var e = typeof t;
   return e == "string" || e == "number" || e == "symbol" || e == "boolean" ? t !== "__proto__" : t === null;
 }
-var Oi = $i, xi = Oi;
-function Ai(t, e) {
+var Oi = $i, Ai = Oi;
+function xi(t, e) {
   var r = t.__data__;
-  return xi(e) ? r[typeof e == "string" ? "string" : "hash"] : r.map;
+  return Ai(e) ? r[typeof e == "string" ? "string" : "hash"] : r.map;
 }
-var E = Ai, Si = E;
-function Ci(t) {
+var E = xi, Si = E;
+function wi(t) {
   var e = Si(this, t).delete(t);
   return this.size -= e ? 1 : 0, e;
 }
-var wi = Ci, ji = E;
+var Ci = wi, ji = E;
 function Ti(t) {
   return ji(this, t).get(t);
 }
@@ -280,7 +280,7 @@ function Bi(t, e) {
   var r = Ei(this, t), i = r.size;
   return r.set(t, e), this.size += r.size == i ? 0 : 1, this;
 }
-var Hi = Bi, Li = mi, Ui = wi, Fi = Mi, zi = Pi, Ri = Hi;
+var Hi = Bi, Li = mi, Ui = Ci, Fi = Mi, zi = Pi, Ri = Hi;
 function m(t) {
   var e = -1, r = t == null ? 0 : t.length;
   for (this.clear(); ++e < r; ) {
@@ -338,8 +338,8 @@ function na(t) {
     return e;
   };
 }
-var oa = na, la = oa, ha = la(), ca = ha, C = { exports: {} };
-C.exports;
+var oa = na, la = oa, ha = la(), ca = ha, w = { exports: {} };
+w.exports;
 (function(t, e) {
   var r = y, i = e && !e.nodeType && e, s = i && !0 && t && !t.nodeType && t, a = s && s.exports === i, n = a ? r.Buffer : void 0, o = n ? n.allocUnsafe : void 0;
   function l(c, u) {
@@ -349,8 +349,8 @@ C.exports;
     return c.copy(g), g;
   }
   t.exports = l;
-})(C, C.exports);
-var ua = C.exports, da = y, pa = da.Uint8Array, fa = pa, J = fa;
+})(w, w.exports);
+var ua = w.exports, da = y, pa = da.Uint8Array, fa = pa, J = fa;
 function ga(t) {
   var e = new t.constructor(t.byteLength);
   return new J(e).set(new J(t)), e;
@@ -367,7 +367,7 @@ function ma(t, e) {
     e[r] = t[r];
   return e;
 }
-var $a = ma, Oa = p, tt = Object.create, xa = /* @__PURE__ */ function() {
+var $a = ma, Oa = p, tt = Object.create, Aa = /* @__PURE__ */ function() {
   function t() {
   }
   return function(e) {
@@ -379,18 +379,18 @@ var $a = ma, Oa = p, tt = Object.create, xa = /* @__PURE__ */ function() {
     var r = new t();
     return t.prototype = void 0, r;
   };
-}(), Aa = xa;
+}(), xa = Aa;
 function Sa(t, e) {
   return function(r) {
     return t(e(r));
   };
 }
-var Ca = Sa, wa = Ca, ja = wa(Object.getPrototypeOf, Object), mt = ja, Ta = Object.prototype;
+var wa = Sa, Ca = wa, ja = Ca(Object.getPrototypeOf, Object), mt = ja, Ta = Object.prototype;
 function Ma(t) {
   var e = t && t.constructor, r = typeof e == "function" && e.prototype || Ta;
   return t === r;
 }
-var $t = Ma, Ia = Aa, Da = mt, Pa = $t;
+var $t = Ma, Ia = xa, Da = mt, Pa = $t;
 function Ea(t) {
   return typeof t.constructor == "function" && !Pa(t) ? Ia(Da(t)) : {};
 }
@@ -398,15 +398,15 @@ var Ba = Ea;
 function Ha(t) {
   return t != null && typeof t == "object";
 }
-var A = Ha, La = T, Ua = A, Fa = "[object Arguments]";
+var x = Ha, La = T, Ua = x, Fa = "[object Arguments]";
 function za(t) {
   return Ua(t) && La(t) == Fa;
 }
-var Ra = za, et = Ra, qa = A, Ot = Object.prototype, Ga = Ot.hasOwnProperty, Na = Ot.propertyIsEnumerable, ka = et(/* @__PURE__ */ function() {
+var Ra = za, et = Ra, qa = x, Ot = Object.prototype, Ga = Ot.hasOwnProperty, Na = Ot.propertyIsEnumerable, ka = et(/* @__PURE__ */ function() {
   return arguments;
 }()) ? et : function(t) {
   return qa(t) && Ga.call(t, "callee") && !Na.call(t, "callee");
-}, xt = ka, Ka = Array.isArray, At = Ka, Wa = 9007199254740991;
+}, At = ka, Ka = Array.isArray, xt = Ka, Wa = 9007199254740991;
 function Za(t) {
   return typeof t == "number" && t > -1 && t % 1 == 0 && t <= Wa;
 }
@@ -414,21 +414,21 @@ var St = Za, Va = L, Xa = St;
 function Ya(t) {
   return t != null && Xa(t.length) && !Va(t);
 }
-var z = Ya, Qa = z, Ja = A;
+var z = Ya, Qa = z, Ja = x;
 function ts(t) {
   return Ja(t) && Qa(t);
 }
-var es = ts, w = { exports: {} };
+var es = ts, C = { exports: {} };
 function rs() {
   return !1;
 }
 var is = rs;
-w.exports;
+C.exports;
 (function(t, e) {
   var r = y, i = is, s = e && !e.nodeType && e, a = s && !0 && t && !t.nodeType && t, n = a && a.exports === s, o = n ? r.Buffer : void 0, l = o ? o.isBuffer : void 0, c = l || i;
   t.exports = c;
-})(w, w.exports);
-var Ct = w.exports, as = T, ss = mt, ns = A, os = "[object Object]", ls = Function.prototype, hs = Object.prototype, wt = ls.toString, cs = hs.hasOwnProperty, us = wt.call(Object);
+})(C, C.exports);
+var wt = C.exports, as = T, ss = mt, ns = x, os = "[object Object]", ls = Function.prototype, hs = Object.prototype, Ct = ls.toString, cs = hs.hasOwnProperty, us = Ct.call(Object);
 function ds(t) {
   if (!ns(t) || as(t) != os)
     return !1;
@@ -436,11 +436,11 @@ function ds(t) {
   if (e === null)
     return !0;
   var r = cs.call(e, "constructor") && e.constructor;
-  return typeof r == "function" && r instanceof r && wt.call(r) == us;
+  return typeof r == "function" && r instanceof r && Ct.call(r) == us;
 }
-var ps = ds, fs = T, gs = St, vs = A, ys = "[object Arguments]", bs = "[object Array]", _s = "[object Boolean]", ms = "[object Date]", $s = "[object Error]", Os = "[object Function]", xs = "[object Map]", As = "[object Number]", Ss = "[object Object]", Cs = "[object RegExp]", ws = "[object Set]", js = "[object String]", Ts = "[object WeakMap]", Ms = "[object ArrayBuffer]", Is = "[object DataView]", Ds = "[object Float32Array]", Ps = "[object Float64Array]", Es = "[object Int8Array]", Bs = "[object Int16Array]", Hs = "[object Int32Array]", Ls = "[object Uint8Array]", Us = "[object Uint8ClampedArray]", Fs = "[object Uint16Array]", zs = "[object Uint32Array]", h = {};
+var ps = ds, fs = T, gs = St, vs = x, ys = "[object Arguments]", bs = "[object Array]", _s = "[object Boolean]", ms = "[object Date]", $s = "[object Error]", Os = "[object Function]", As = "[object Map]", xs = "[object Number]", Ss = "[object Object]", ws = "[object RegExp]", Cs = "[object Set]", js = "[object String]", Ts = "[object WeakMap]", Ms = "[object ArrayBuffer]", Is = "[object DataView]", Ds = "[object Float32Array]", Ps = "[object Float64Array]", Es = "[object Int8Array]", Bs = "[object Int16Array]", Hs = "[object Int32Array]", Ls = "[object Uint8Array]", Us = "[object Uint8ClampedArray]", Fs = "[object Uint16Array]", zs = "[object Uint32Array]", h = {};
 h[Ds] = h[Ps] = h[Es] = h[Bs] = h[Hs] = h[Ls] = h[Us] = h[Fs] = h[zs] = !0;
-h[ys] = h[bs] = h[Ms] = h[_s] = h[Is] = h[ms] = h[$s] = h[Os] = h[xs] = h[As] = h[Ss] = h[Cs] = h[ws] = h[js] = h[Ts] = !1;
+h[ys] = h[bs] = h[Ms] = h[_s] = h[Is] = h[ms] = h[$s] = h[Os] = h[As] = h[xs] = h[Ss] = h[ws] = h[Cs] = h[js] = h[Ts] = !1;
 function Rs(t) {
   return vs(t) && gs(t.length) && !!h[fs(t)];
 }
@@ -493,7 +493,7 @@ function un(t, e) {
   var r = typeof t;
   return e = e ?? hn, !!e && (r == "number" || r != "symbol" && cn.test(t)) && t > -1 && t % 1 == 0 && t < e;
 }
-var Mt = un, dn = ln, pn = xt, fn = At, gn = Ct, vn = Mt, yn = jt, bn = Object.prototype, _n = bn.hasOwnProperty;
+var Mt = un, dn = ln, pn = At, fn = xt, gn = wt, vn = Mt, yn = jt, bn = Object.prototype, _n = bn.hasOwnProperty;
 function mn(t, e) {
   var r = fn(t), i = !r && pn(t), s = !r && !i && gn(t), a = !r && !i && !s && yn(t), n = r || i || s || a, o = n ? dn(t.length, String) : [], l = o.length;
   for (var c in t)
@@ -512,10 +512,10 @@ function On(t) {
       e.push(r);
   return e;
 }
-var xn = On, An = p, Sn = $t, Cn = xn, wn = Object.prototype, jn = wn.hasOwnProperty;
+var An = On, xn = p, Sn = $t, wn = An, Cn = Object.prototype, jn = Cn.hasOwnProperty;
 function Tn(t) {
-  if (!An(t))
-    return Cn(t);
+  if (!xn(t))
+    return wn(t);
   var e = Sn(t), r = [];
   for (var i in t)
     i == "constructor" && (e || !jn.call(t, i)) || r.push(i);
@@ -529,7 +529,7 @@ var It = En, Bn = nn, Hn = It;
 function Ln(t) {
   return Bn(t, Hn(t));
 }
-var Un = Ln, at = _t, Fn = ua, zn = _a, Rn = $a, qn = Ba, st = xt, nt = At, Gn = es, Nn = Ct, kn = L, Kn = p, Wn = ps, Zn = jt, ot = Tt, Vn = Un;
+var Un = Ln, at = _t, Fn = ua, zn = _a, Rn = $a, qn = Ba, st = At, nt = xt, Gn = es, Nn = wt, kn = L, Kn = p, Wn = ps, Zn = jt, ot = Tt, Vn = Un;
 function Xn(t, e, r, i, s, a, n) {
   var o = ot(t, r), l = ot(e, r), c = n.get(l);
   if (c) {
@@ -578,10 +578,10 @@ function vo(t) {
 }
 var yo = vo, bo = Pt, _o = yo, mo = _o(function(t, e, r, i) {
   bo(t, e, r, i);
-}), $o = mo, Oo = ut, xo = yt, Ao = no, So = $o, Co = xo(function(t) {
-  return t.push(void 0, Ao), Oo(So, void 0, t);
-}), wo = Co;
-const jo = /* @__PURE__ */ Bt(wo), To = {
+}), $o = mo, Oo = ut, Ao = yt, xo = no, So = $o, wo = Ao(function(t) {
+  return t.push(void 0, xo), Oo(So, void 0, t);
+}), Co = wo;
+const jo = /* @__PURE__ */ Bt(Co), To = {
   modules: ["DisplaySize", "Toolbar", "Resize"],
   overlayStyles: {
     position: "absolute",
@@ -647,7 +647,7 @@ class R {
     this.onCreate = () => {
     }, this.onDestroy = () => {
     }, this.onUpdate = () => {
-    }, this.overlay = e.overlay, this.img = e.img, this.options = e.options, this.requestUpdate = e.onUpdate;
+    }, this.overlay = e.overlay, this.img = e.img, this.options = e.options, this.requestUpdate = e.onUpdate, this.img && (this.img.setAttribute("w", this.img.naturalWidth.toString()), this.img.setAttribute("h", this.img.naturalHeight.toString()));
   }
 }
 class Mo extends R {
@@ -703,7 +703,7 @@ const Io = `<svg viewbox="0 0 18 18">
   <path class="ql-fill" d="M13,16H3a1,1,0,0,1,0-2H13A1,1,0,0,1,13,16Z"/>
   <path class="ql-fill" d="M13,4H3A1,1,0,0,1,3,2H13A1,1,0,0,1,13,4Z"/>
   <rect class="ql-fill" x="8" y="6" width="8" height="6" rx="1" ry="1" transform="translate(24 18) rotate(-180)"/>
-</svg>`, Eo = window.Quill.import("formats/image"), ht = ["alt", "height", "width", "style"];
+</svg>`, Eo = window.Quill.import("formats/image"), ht = ["alt", "height", "width", "style", "w", "h"];
 class Bo extends Eo {
   static formats(e) {
     return ht.reduce(function(r, i) {
@@ -715,7 +715,7 @@ class Bo extends Eo {
   }
 }
 window.Quill.register(Bo, !0);
-const q = window.Quill.imports.parchment, f = new q.StyleAttributor("float", "float"), v = new q.StyleAttributor("margin", "margin"), x = new q.StyleAttributor("display", "display");
+const q = window.Quill.imports.parchment, f = new q.StyleAttributor("float", "float"), v = new q.StyleAttributor("margin", "margin"), A = new q.StyleAttributor("display", "display");
 class Ho extends R {
   constructor(e) {
     super(e), this.alignments = [], this.onCreate = () => {
@@ -728,26 +728,26 @@ class Ho extends R {
       if (this.alignments = [], !this.img)
         return;
       const r = () => {
-        f.remove(this.img), v.remove(this.img), x.remove(this.img);
+        f.remove(this.img), v.remove(this.img), A.remove(this.img);
       };
       ((s = this.options.toolbarButtons) == null ? void 0 : s.left) !== !1 && this.alignments.push({
         icon: Io,
         apply: () => {
-          x.add(this.img, "inline"), f.add(this.img, "left"), v.add(this.img, "0 1em 1em 0");
+          A.add(this.img, "inline"), f.add(this.img, "left"), v.add(this.img, "0 1em 1em 0");
         },
         isApplied: () => f.value(this.img) === "left",
         remove: r
       }), ((a = this.options.toolbarButtons) == null ? void 0 : a.center) !== !1 && this.alignments.push({
         icon: Do,
         apply: () => {
-          x.add(this.img, "block"), f.remove(this.img), v.add(this.img, "auto");
+          A.add(this.img, "block"), f.remove(this.img), v.add(this.img, "auto");
         },
         isApplied: () => v.value(this.img) === "auto",
         remove: r
       }), ((n = this.options.toolbarButtons) == null ? void 0 : n.right) !== !1 && this.alignments.push({
         icon: Po,
         apply: () => {
-          x.add(this.img, "inline"), f.add(this.img, "right"), v.add(this.img, "0 0 1em 1em");
+          A.add(this.img, "inline"), f.add(this.img, "right"), v.add(this.img, "0 0 1em 1em");
         },
         isApplied: () => f.value(this.img) === "right",
         remove: r
@@ -757,7 +757,7 @@ class Ho extends R {
       for (const o of Object.values(i)) {
         if (!(o instanceof Function))
           continue;
-        const l = o(this.img, x, f, v);
+        const l = o(this.img, A, f, v);
         this.alignments.push(l);
       }
     }, this._addToolbarButtons = () => {

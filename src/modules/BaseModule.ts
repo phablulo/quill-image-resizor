@@ -12,6 +12,10 @@ export abstract class BaseModule {
     this.img = resizer.img
     this.options = resizer.options
     this.requestUpdate = resizer.onUpdate
+    if (this.img) {
+      this.img.setAttribute('w', this.img.naturalWidth.toString())
+      this.img.setAttribute('h', this.img.naturalHeight.toString())
+    }
   }
   /*
         requestUpdate (passed in by the library during construction, above) can be used to let the library know that

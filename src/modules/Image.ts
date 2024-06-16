@@ -1,5 +1,5 @@
 const BaseImageFormat = window.Quill.import('formats/image')
-const ImageFormatAttributesList = ['alt', 'height', 'width', 'style']
+const ImageFormatAttributesList = ['alt', 'height', 'width', 'style', 'w', 'h']
 
 // thanks Maximus!
 // https://github.com/kensnyder/quill-image-resize-module/issues/10#issuecomment-317747389
