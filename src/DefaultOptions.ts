@@ -60,6 +60,6 @@ export default {
   toolbarButtonSvgStyles: {
     fill: '#444',
     stroke: '#444',
-    strokeWidth: '2'
+    strokeWidth: '0'
   }
 } as ImageResizorOptions
